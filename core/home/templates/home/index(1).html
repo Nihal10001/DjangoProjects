@@ -1,0 +1,36 @@
+{% extends "home/base.html" %}
+
+{% block start %}
+
+<div class="container p-4">
+
+{%  include "home/image.html" %}
+
+    
+    <h2>Your Lucky Number is - <button class="btn btn-danger">{{lucky_number}}</button></h2>
+
+    <ul>
+        {% for vegetable in Vegetables %}
+        <li>{{vegetable}}</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    
+    {% if Person_age >= 18 %}
+    <h1>You Can Vote</h1>
+    {% else %}
+    <h1>You are not elligible to Vote...Kid😂</h1>
+    {% endif %}
+    <hr>
+    
+    <h3>Cities Information</h3>
+    <p>S No. | Name | Population | Country </p>
+    {% for city in cities %}
+    <p> {{forloop.counter}} | {{city.name}} | {{city.population}} | {{city.country}} </p>
+    {% endfor %}
+    <hr><br>
+    <a href="{% url 'about'%}" target="_blank">about</a> |
+    <a href="{% url 'contact'%}" target="_blank">contact</a>
+    </div>
+
+{% endblock %}
